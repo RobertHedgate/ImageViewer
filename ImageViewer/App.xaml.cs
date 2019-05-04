@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageViewer.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace ImageViewer
     /// </summary>
     sealed partial class App : Application
     {
+        //Models
+        public ImagesModel ImagesModel = new ImagesModel();
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

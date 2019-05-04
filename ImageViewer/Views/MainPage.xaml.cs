@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageViewer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,19 @@ namespace ImageViewer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        MainPageViewModel _mainPageViewModel = new MainPageViewModel();
+
         public MainPage()
         {
+            DataContext = _mainPageViewModel;
+
             this.InitializeComponent();
+
+        }
+
+        private async void GetImages_Click(object sender, RoutedEventArgs e)
+        {
+            await _mainPageViewModel.GetImages();
         }
     }
 }
