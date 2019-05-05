@@ -13,12 +13,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="20" Grid.Row="0">
+        <StackPanel Margin="20" Grid.Row="0" Spacing="10">
             <TextBlock Text="Image viewer" FontSize="50" HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
                 <TextBlock Text="Set a word to get images about:" VerticalAlignment="Center"/>
                 <TextBox Text="{Binding Tag, Mode=TwoWay}" MinWidth="100" PlaceholderText="e.g cat"/>
                 <Button Content="Get images" Click="GetImages_Click" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Visibility="{Binding ShowPaging}">
+                <Button Content="previoius" Click="GetPreviousPage_Click" IsEnabled="{Binding PreviousEnabled}"/>
+                <TextBlock Text="{Binding NoOfPage}" VerticalAlignment="Center"/>
+                <Button Content="next" Click="GetNextPage_Click" IsEnabled="{Binding NextEnabled}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding ShowErrorMessage}" >
+                <TextBlock Text="Error getting images" FontSize="30" Foreground="DarkRed" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding ErrorMessage}" FontSize="10" Foreground="DarkRed" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1"
@@ -28,15 +37,11 @@
                 HorizontalAlignment="Center">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding}" Height="180" Width="180" Stretch="UniformToFill"/>
+                        <Image Source="{Binding}" MaxWidth="250" MaxHeight="250" Stretch="Uniform"/>
                     </DataTemplate>
                 </GridView.ItemTemplate>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
             </GridView>
         </ScrollViewer>
+        <ProgressRing Grid.Row="1" IsActive="{Binding SpinnerActive}" Visibility="{Binding ShowSpinner}" Height="200" Width="200"/>
     </Grid>
 </Page>

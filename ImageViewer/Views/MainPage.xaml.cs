@@ -37,5 +37,15 @@ namespace ImageViewer
         {
             await _mainPageViewModel.GetImages();
         }
+
+        private async void GetPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            await _mainPageViewModel.GetPreviousPage();
+        }
+
+        private async void GetNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            await _mainPageViewModel.GetNextPage();
+        }
     }
 }
