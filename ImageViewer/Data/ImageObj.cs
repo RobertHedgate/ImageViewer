@@ -8,6 +8,10 @@ namespace ImageViewer.Data
 {
     public class ImageObj
     {
-        public string Uri;
+        public List<string> images = null;
+        public int Page = 0;
+        public int Pages = 0;
+        public int Total = 0;
+        public string ErrorMessage;
     }
 }

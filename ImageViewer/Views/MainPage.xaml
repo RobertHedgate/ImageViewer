@@ -9,6 +9,34 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Get images" Click="GetImages_Click" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="20" Grid.Row="0">
+            <TextBlock Text="Image viewer" FontSize="50" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                <TextBlock Text="Set a word to get images about:" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Tag, Mode=TwoWay}" MinWidth="100" PlaceholderText="e.g cat"/>
+                <Button Content="Get images" Click="GetImages_Click" />
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      ScrollViewer.VerticalScrollMode="Enabled">
+            <GridView ItemsSource="{Binding Images}"                
+                HorizontalAlignment="Center">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Height="180" Width="180" Stretch="UniformToFill"/>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+        </ScrollViewer>
     </Grid>
 </Page>
