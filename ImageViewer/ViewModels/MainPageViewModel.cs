@@ -160,6 +160,8 @@ namespace ImageViewer.ViewModels
         {
             SpinnerActive = true;
             _currentPage = _currentPage - 1;
+            if (_currentPage < 1)
+                _currentPage = 1;
             var images = await((App)Application.Current).ImagesModel.GetImagesAsync(Tag, _currentPage);
             SetImageData(images);
         }
@@ -168,6 +170,8 @@ namespace ImageViewer.ViewModels
         {
             SpinnerActive = true;
             _currentPage = _currentPage + 1;
+            if (_currentPage > _lastPage)
+                _currentPage = _lastPage;
             var images = await((App)Application.Current).ImagesModel.GetImagesAsync(Tag, _currentPage);
             SetImageData(images);
         }
