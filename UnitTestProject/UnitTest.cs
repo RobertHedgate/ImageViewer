@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestProject
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         [TestMethod]
         public void TestCorrectUrlIsReturnedFromPhoto()
@@ -22,5 +22,15 @@ namespace UnitTestProject
 
             Assert.AreEqual("https://farm1.staticflickr.com/2/3_4.jpg", url);
         }
+
+        [TestMethod]
+        public void TestGetImageReturnsErrorIsTagIsEmpty()
+        {
+            var imageModel = new ImagesModel();
+            var result = imageModel.GetImagesAsync("").Result;
+
+            Assert.IsFalse(string.IsNullOrEmpty(result.ErrorMessage));
+        }
+
     }
 }
