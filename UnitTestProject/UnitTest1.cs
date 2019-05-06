@@ -1,10 +1,8 @@
-﻿
-using System;
 using ImageViewer.Data;
 using ImageViewer.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTest
+namespace UnitTestProject
 {
     [TestClass]
     public class UnitTest1
